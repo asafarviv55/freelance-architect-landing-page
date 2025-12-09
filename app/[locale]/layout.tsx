@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   description:
     "Specialized in building fast, reliable MVPs for startups. Expert in system architecture, cloud infrastructure, and scaling solutions.",
   generator: "v0.app",
+  verification: {
+    google: "JJTU225S3EOlKQmVzbOrZ4esN8oOdI75GCnIwQiP0nw",
+  },
   icons: {
     icon: [
       {
