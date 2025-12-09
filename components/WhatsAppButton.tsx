@@ -1,11 +1,27 @@
 "use client"
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default function WhatsAppButton() {
+  const handleClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'whatsapp_click', {
+        event_category: 'lead',
+        event_label: 'whatsapp_floating_button'
+      });
+    }
+  };
+
   return (
     <a
       href="https://wa.me/972546522485?text=Hi%20Asaf,%20I'm%20interested%20in%20your%20development%20services"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="fixed bottom-5 right-5 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300"
       aria-label="Contact on WhatsApp"
     >

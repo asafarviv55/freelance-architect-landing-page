@@ -8,16 +8,43 @@ import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import WhatsAppButton from "@/components/WhatsAppButton"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
+import GoogleAnalytics from "@/components/GoogleAnalytics"
 import "../globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Senior Software Architect | MVP Development & System Design",
+  title: "Asaf Arviv | Senior Software Architect & MVP Development",
   description:
-    "Specialized in building fast, reliable MVPs for startups. Expert in system architecture, cloud infrastructure, and scaling solutions.",
-  generator: "v0.app",
+    "SaaS development, system architecture, backend engineering, AI automation and MVP building for startups and businesses. Expert in cloud infrastructure and scaling solutions.",
+  keywords: ["software architect", "MVP development", "SaaS", "backend engineering", "AI automation", "system design", "startup development"],
+  authors: [{ name: "Asaf Arviv" }],
+  creator: "Asaf Arviv",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    alternateLocale: "he_IL",
+    title: "Asaf Arviv | Senior Software Architect & MVP Development",
+    description: "SaaS development, system architecture, backend engineering, AI automation and MVP building for startups and businesses.",
+    siteName: "Asaf Arviv - Software Architect",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Asaf Arviv | Senior Software Architect & MVP Development",
+    description: "SaaS development, system architecture, backend engineering, AI automation and MVP building for startups and businesses.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   verification: {
     google: "JJTU225S3EOlKQmVzbOrZ4esN8oOdI75GCnIwQiP0nw",
   },
@@ -59,6 +86,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}>
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className={`font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
           <LanguageSwitcher />

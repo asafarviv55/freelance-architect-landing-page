@@ -1,0 +1,7 @@
+# robots.txt for Asaf Arviv - Software Architect
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://asafarviv.com/sitemap.xml

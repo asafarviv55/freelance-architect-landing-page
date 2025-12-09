@@ -2,8 +2,23 @@
 
 import { useTranslations } from 'next-intl';
 
+declare global {
+  interface Window {
+    gtag?: (...args: any[]) => void;
+  }
+}
+
 export default function Hero() {
   const t = useTranslations('hero');
+
+  const handleWhatsAppClick = () => {
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'whatsapp_click', {
+        event_category: 'lead',
+        event_label: 'hero_cta_button'
+      });
+    }
+  };
 
   return (
     <section className="min-h-[90vh] px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center text-center">
@@ -28,6 +43,7 @@ export default function Hero() {
             href="https://wa.me/972546522485?text=Hi%20Asaf,%20I'm%20interested%20in%20your%20development%20services"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleWhatsAppClick}
             className="px-6 sm:px-8 py-3 sm:py-3.5 bg-green-500 text-white text-sm font-medium rounded-full hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/25 transition-all duration-300 inline-flex items-center justify-center gap-2"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
