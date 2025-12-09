@@ -2,8 +2,13 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+import { routing } from '@/i18n/routing'
 import WhatsAppButton from "@/components/WhatsAppButton"
-import "./globals.css"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
+import "../globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -32,16 +37,31 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
-}: Readonly<{
+  params
+}: {
   children: React.ReactNode
-}>) {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params;
+
+  // Validate locale
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+  const isRTL = locale === 'he';
+
   return (
-    <html lang="en">
+    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}>
       <body className={`font-sans antialiased`}>
-        {children}
-        <WhatsAppButton />
+        <NextIntlClientProvider messages={messages}>
+          <LanguageSwitcher />
+          {children}
+          <WhatsAppButton />
+        </NextIntlClientProvider>
         <Analytics />
       </body>
     </html>

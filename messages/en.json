@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "title": "Senior Software Architect",
+    "subtitle": "Building fast, reliable systems that scale",
+    "description": "I specialize in building fast, reliable MVPs for early-stage founders and startups — helping them validate ideas, launch quickly, and scale efficiently. From concept to production, I turn raw ideas into fully functional systems.",
+    "cta": "WhatsApp Me",
+    "viewWork": "View My Work"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Expertise across the full technology stack",
+    "items": {
+      "mvp": {
+        "title": "MVP Development for Founders & Startups",
+        "description": "Rapid development of production-ready MVPs — from idea, to architecture, to a working product users can test."
+      },
+      "saas": {
+        "title": "SaaS Platform Development",
+        "description": "End-to-end development of scalable SaaS platforms with authentication, multi-tenancy, and robust business logic."
+      },
+      "ai": {
+        "title": "AI Integrations & Automation",
+        "description": "Seamless integration of AI models and automation workflows to enhance product capabilities and user experience."
+      },
+      "backend": {
+        "title": "Backend Engineering",
+        "description": "High-performance APIs, databases, and microservices designed for reliability, security, and scale."
+      },
+      "cloud": {
+        "title": "Cloud & DevOps",
+        "description": "Infrastructure design, CI/CD pipelines, monitoring, and deployment automation across major cloud providers."
+      },
+      "architecture": {
+        "title": "CTO-Level System Architecture",
+        "description": "Strategic architecture decisions, system design, technical roadmaps, and guidance for growing teams."
+      }
+    }
+  },
+  "mvpSection": {
+    "title": "MVPs for Early-Stage Founders",
+    "subtitle": "Launch fast. Test early. Learn quickly.",
+    "items": {
+      "buildFirst": {
+        "title": "Build What Matters First",
+        "description": "Focus on the core features needed to validate your idea."
+      },
+      "fastDelivery": {
+        "title": "Fast Delivery → Real User Feedback",
+        "description": "Your first version is live quickly, so you can start learning immediately."
+      },
+      "scalable": {
+        "title": "Scalable Foundation",
+        "description": "Built cleanly from day one so the MVP can grow into a full product."
+      }
+    }
+  },
+  "whyWorkWithMe": {
+    "title": "Why Work With Me",
+    "subtitle": "What sets my approach apart",
+    "reasons": [
+      "Proven track record of launching successful products at scale",
+      "Deep expertise in system architecture and technical decision-making",
+      "Experienced in guiding founders through the entire journey: MVP planning, product decisions, architecture, and launch.",
+      "Focus on building production-ready code, not prototypes",
+      "Available for ongoing technical guidance and mentorship",
+      "Clear communication and collaborative problem-solving approach"
+    ]
+  },
+  "process": {
+    "title": "My Process",
+    "subtitle": "From concept to production",
+    "steps": {
+      "discovery": {
+        "title": "Discovery & MVP Planning",
+        "description": "Clarifying product goals, defining the core features, and identifying what's essential for the first launch."
+      },
+      "design": {
+        "title": "System Design for Fast Validation",
+        "description": "Architecture focused on speed, clarity, and the ability to evolve as the product scales."
+      },
+      "development": {
+        "title": "Development & Integration",
+        "description": "Building your product with clean, maintainable code and thoughtful technical decisions."
+      },
+      "testing": {
+        "title": "Testing & Deployment",
+        "description": "Comprehensive testing, optimization, and deployment to production for immediate user feedback."
+      },
+      "launch": {
+        "title": "Launch & Support",
+        "description": "Go-live support, initial monitoring, and guidance for gathering user feedback and iterating."
+      }
+    }
+  },
+  "footer": {
+    "services": "Services",
+    "mvpDevelopment": "MVP Development",
+    "saasTitle": "SaaS Platforms",
+    "aiIntegration": "AI Integration",
+    "architecture": "Architecture",
+    "company": "Company",
+    "about": "About",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "connect": "Connect",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Insights on product architecture and scaling startups.",
+    "emailPlaceholder": "your@email.com",
+    "copyright": "© 2025 Senior Software Architect. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "languageSwitcher": {
+    "english": "English",
+    "hebrew": "עברית"
+  }
+}

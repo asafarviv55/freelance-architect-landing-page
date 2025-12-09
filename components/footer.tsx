@@ -1,60 +1,66 @@
+"use client"
+
+import { useTranslations } from 'next-intl';
+
 export default function Footer() {
+  const t = useTranslations('footer');
+
   return (
     <footer className="px-6 py-16 sm:px-8 lg:px-12 bg-gray-950 text-white">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div>
-            <h3 className="font-medium mb-4">Services</h3>
+            <h3 className="font-medium mb-4">{t('services')}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  MVP Development
+                  {t('mvpDevelopment')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  SaaS Platforms
+                  {t('saasTitle')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  AI Integration
+                  {t('aiIntegration')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  Architecture
+                  {t('architecture')}
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-medium mb-4">Company</h3>
+            <h3 className="font-medium mb-4">{t('company')}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  About
+                  {t('about')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  Portfolio
+                  {t('portfolio')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  Blog
+                  {t('blog')}
                 </a>
               </li>
               <li>
                 <a href="#" className="hover:text-white transition-colors">
-                  Contact
+                  {t('contact')}
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="font-medium mb-4">Connect</h3>
+            <h3 className="font-medium mb-4">{t('connect')}</h3>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <a href="#" className="hover:text-white transition-colors">
@@ -79,24 +85,24 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-medium mb-4">Newsletter</h3>
-            <p className="text-sm text-gray-400 mb-4">Insights on product architecture and scaling startups.</p>
+            <h3 className="font-medium mb-4">{t('newsletter')}</h3>
+            <p className="text-sm text-gray-400 mb-4">{t('newsletterDescription')}</p>
             <input
               type="email"
-              placeholder="your@email.com"
+              placeholder={t('emailPlaceholder')}
               className="w-full px-4 py-2 rounded-lg bg-gray-900 text-white text-sm placeholder-gray-500 border border-gray-800 focus:border-gray-700 outline-none"
             />
           </div>
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>&copy; 2025 Senior Software Architect. All rights reserved.</p>
+          <p>{t('copyright')}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors">
-              Privacy
+              {t('privacy')}
             </a>
             <a href="#" className="hover:text-white transition-colors">
-              Terms
+              {t('terms')}
             </a>
           </div>
         </div>
