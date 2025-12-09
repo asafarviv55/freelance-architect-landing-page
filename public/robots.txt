@@ -4,4 +4,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://asafarviv.com/sitemap.xml
+Sitemap: https://architectflow.vercel.app/sitemap.xml
