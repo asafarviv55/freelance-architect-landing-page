@@ -17,4 +17,52 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://asafarviv.com/en/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://asafarviv.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://asafarviv.com/he/privacy-policy"/>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://asafarviv.com/he/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://asafarviv.com/en/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://asafarviv.com/he/privacy-policy"/>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://asafarviv.com/en/terms-of-use</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://asafarviv.com/en/terms-of-use"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://asafarviv.com/he/terms-of-use"/>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://asafarviv.com/he/terms-of-use</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://asafarviv.com/en/terms-of-use"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://asafarviv.com/he/terms-of-use"/>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://asafarviv.com/en/accessibility</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://asafarviv.com/en/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://asafarviv.com/he/accessibility"/>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://asafarviv.com/he/accessibility</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://asafarviv.com/en/accessibility"/>
+    <xhtml:link rel="alternate" hreflang="he" href="https://asafarviv.com/he/accessibility"/>
+    <lastmod>2025-12-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
