@@ -52,7 +52,7 @@ export default function Hero() {
             {t('cta')}
           </a>
           <a
-            href="#services"
+            href="#portfolio"
             className="px-6 sm:px-8 py-3 sm:py-3.5 border border-gray-300 text-gray-700 text-sm font-medium rounded-full hover:border-gray-400 hover:bg-gray-50 transition-all duration-300"
           >
             {t('viewWork')}
