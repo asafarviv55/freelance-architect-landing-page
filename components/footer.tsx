@@ -55,9 +55,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <Link href={`/${locale}/blog`} className="text-gray-300 hover:text-white transition-colors">
                   {t('blog')}
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-gray-300 hover:text-white transition-colors">
