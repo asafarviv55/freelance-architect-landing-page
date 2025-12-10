@@ -1,7 +1,0 @@
-# robots.txt for Asaf Arviv - Software Architect
-
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://architectflow.vercel.app/sitemap.xml
