@@ -6,6 +6,38 @@
     "cta": "WhatsApp Me",
     "viewWork": "View My Work"
   },
+  "portfolio": {
+    "title": "Selected Work",
+    "subtitle": "Real projects, real results",
+    "techStack": "Tech Stack",
+    "resultLabel": "Result",
+    "items": {
+      "project1": {
+        "icon": "🚀",
+        "category": "MVP Development",
+        "title": "FinTech Payment Platform",
+        "description": "Built a complete payment processing MVP for a startup, enabling secure transactions and real-time reporting from day one.",
+        "technologies": ["Node.js", "PostgreSQL", "Stripe", "React"],
+        "result": "Launched in 6 weeks"
+      },
+      "project2": {
+        "icon": "📊",
+        "category": "AI Data Platform",
+        "title": "Database Insights AI",
+        "description": "Upload any database and get instant AI-powered insights. Ask questions in natural language and receive visualizations, trends, and actionable recommendations.",
+        "technologies": ["Python", "OpenAI", "PostgreSQL", "React"],
+        "result": "Hours of analysis in seconds"
+      },
+      "project3": {
+        "icon": "🎙️",
+        "category": "AI Automation",
+        "title": "Meeting Analysis System",
+        "description": "Upload business meeting recordings and automatically extract requirements, action items, and key decisions using Gemini AI. Turn conversations into structured documentation.",
+        "technologies": ["Node.js", "Gemini AI", "Next.js", "FFmpeg"],
+        "result": "90% time saved on documentation"
+      }
+    }
+  },
   "services": {
     "title": "Services",
     "subtitle": "Expertise across the full technology stack",

@@ -6,6 +6,38 @@
     "cta": "וואטסאפ",
     "viewWork": "לצפות בעבודות"
   },
+  "portfolio": {
+    "title": "עבודות נבחרות",
+    "subtitle": "פרויקטים אמיתיים, תוצאות אמיתיות",
+    "techStack": "טכנולוגיות",
+    "resultLabel": "תוצאה",
+    "items": {
+      "project1": {
+        "icon": "🚀",
+        "category": "פיתוח MVP",
+        "title": "פלטפורמת תשלומים פינטק",
+        "description": "בניית MVP מלא לעיבוד תשלומים עבור סטארטאפ, המאפשר עסקאות מאובטחות ודיווח בזמן אמת מהיום הראשון.",
+        "technologies": ["Node.js", "PostgreSQL", "Stripe", "React"],
+        "result": "הושק תוך 6 שבועות"
+      },
+      "project2": {
+        "icon": "📊",
+        "category": "פלטפורמת AI לנתונים",
+        "title": "תובנות מבסיס נתונים עם AI",
+        "description": "העלה כל בסיס נתונים וקבל תובנות מיידיות מבוססות AI. שאל שאלות בשפה טבעית וקבל ויזואליזציות, מגמות והמלצות פרקטיות.",
+        "technologies": ["Python", "OpenAI", "PostgreSQL", "React"],
+        "result": "שעות ניתוח בשניות"
+      },
+      "project3": {
+        "icon": "🎙️",
+        "category": "אוטומציית AI",
+        "title": "מערכת ניתוח פגישות",
+        "description": "העלה הקלטות של פגישות עסקיות וחלץ אוטומטית דרישות, משימות והחלטות מפתח באמצעות Gemini AI. הפוך שיחות לתיעוד מובנה.",
+        "technologies": ["Node.js", "Gemini AI", "Next.js", "FFmpeg"],
+        "result": "חיסכון של 90% בזמן תיעוד"
+      }
+    }
+  },
   "services": {
     "title": "שירותים",
     "subtitle": "מומחיות לאורך כל הסטאק הטכנולוגי",
