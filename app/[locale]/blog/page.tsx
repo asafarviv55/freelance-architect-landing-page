@@ -5,6 +5,19 @@ import Link from 'next/link';
 
 const blogPosts = [
   {
+    slug: "system-architecture-planning-guide",
+    date: "2025-12-11",
+    readTime: { en: "8 min read", he: "8 דקות קריאה" },
+    title: {
+      en: "How to Plan System Architecture Before Development",
+      he: "איך לתכנן ארכיטקטורת מערכת לפני פיתוח"
+    },
+    excerpt: {
+      en: "A comprehensive guide to planning system architecture — from requirements analysis to scalability planning, with real-world SaaS examples.",
+      he: "מדריך מקיף לתכנון ארכיטקטורת מערכת — מניתוח דרישות ועד תכנון סקיילביליות, עם דוגמאות מעולם ה-SaaS."
+    }
+  },
+  {
     slug: "how-to-build-mvp-for-startups",
     date: "2025-12-10",
     readTime: { en: "3 min read", he: "3 דקות קריאה" },
