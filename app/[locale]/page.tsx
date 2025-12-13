@@ -2,6 +2,7 @@ import Header from "@/components/Header"
 import Hero from "@/components/hero"
 import Services from "@/components/services"
 import Portfolio from "@/components/portfolio"
+import Timeline from "@/components/Timeline"
 import MVPSection from "@/components/mvp-section"
 import WhyWorkWithMe from "@/components/why-work-with-me"
 import Process from "@/components/process"
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <Services />
       <Portfolio />
+      <Timeline />
       <MVPSection />
       <WhyWorkWithMe />
       <Process />

@@ -34,8 +34,8 @@ export default function Header() {
   const navItems = [
     { href: `/${locale}#services`, label: t('services') },
     { href: `/${locale}#portfolio`, label: t('portfolio') },
+    { href: `/${locale}#experience`, label: t('experience') },
     { href: `/${locale}#about`, label: t('about') },
-    { href: `/${locale}#process`, label: t('process') },
     { href: `/${locale}/blog`, label: t('blog'), isLink: true },
   ];
 

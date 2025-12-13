@@ -2,6 +2,7 @@
   "header": {
     "services": "Services",
     "portfolio": "Portfolio",
+    "experience": "Experience",
     "about": "About",
     "process": "Process",
     "blog": "Blog",
@@ -129,6 +130,47 @@
       "launch": {
         "title": "Launch & Support",
         "description": "Go-live support, initial monitoring, and guidance for gathering user feedback and iterating."
+      }
+    }
+  },
+  "timeline": {
+    "title": "Experience",
+    "subtitle": "15+ years building software across industries",
+    "items": {
+      "freelance": {
+        "role": "Senior Full Stack Developer",
+        "company": "Freelance Consultant & Developer",
+        "description": "End-to-end development for international clients. SaaS platforms, AI integrations, data pipelines, and enterprise solutions."
+      },
+      "motorola": {
+        "role": "Full Stack Developer",
+        "company": "Korentec, Motorola Solutions",
+        "description": "Developed client-side applications using Angular and Java infrastructure. Full-stack applications with Spring, Hibernate, and Docker."
+      },
+      "webpals": {
+        "role": "Web Developer",
+        "company": "WebPals",
+        "description": "Developed web interfaces using HTML5, CSS3, JavaScript, and Spring MVC. Marketing and SEO data analysis systems."
+      },
+      "surecomp": {
+        "role": "Java Developer",
+        "company": "SureComp",
+        "description": "Developed Java-based web applications for import/export processes, deployed on JBoss Server."
+      },
+      "bank": {
+        "role": "Backend Developer",
+        "company": "Bank Hapoalim",
+        "description": "Developed and maintained advanced trading systems with MS-SQL, Oracle, and Struts framework."
+      },
+      "education": {
+        "role": "B.Sc. Mathematics & Computer Science",
+        "company": "Netanya Academic College",
+        "description": "Bachelor's degree in Mathematics and Computer Science."
+      },
+      "military": {
+        "role": "Commander",
+        "company": "Israeli Air Force (IAF)",
+        "description": "Full military service as Commander in the Israeli Air Force."
       }
     }
   },

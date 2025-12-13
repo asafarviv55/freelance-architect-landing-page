@@ -2,6 +2,7 @@
   "header": {
     "services": "שירותים",
     "portfolio": "תיק עבודות",
+    "experience": "ניסיון",
     "about": "אודות",
     "process": "תהליך",
     "blog": "בלוג",
@@ -129,6 +130,47 @@
       "launch": {
         "title": "השקה ותמיכה",
         "description": "תמיכה בהשקה, ניטור ראשוני והדרכה לאיסוף פידבק ממשתמשים ואיטרציה."
+      }
+    }
+  },
+  "timeline": {
+    "title": "ניסיון",
+    "subtitle": "15+ שנות ניסיון בבניית תוכנה במגוון תעשיות",
+    "items": {
+      "freelance": {
+        "role": "מפתח Full Stack בכיר",
+        "company": "יועץ ומפתח עצמאי",
+        "description": "פיתוח מקצה לקצה ללקוחות בינלאומיים. פלטפורמות SaaS, אינטגרציות AI, צינורות נתונים ופתרונות ארגוניים."
+      },
+      "motorola": {
+        "role": "מפתח Full Stack",
+        "company": "Korentec, Motorola Solutions",
+        "description": "פיתוח אפליקציות צד לקוח באמצעות Angular ותשתית Java. אפליקציות Full Stack עם Spring, Hibernate ו-Docker."
+      },
+      "webpals": {
+        "role": "מפתח Web",
+        "company": "WebPals",
+        "description": "פיתוח ממשקי ווב באמצעות HTML5, CSS3, JavaScript ו-Spring MVC. מערכות ניתוח נתוני שיווק ו-SEO."
+      },
+      "surecomp": {
+        "role": "מפתח Java",
+        "company": "SureComp",
+        "description": "פיתוח אפליקציות ווב מבוססות Java לתהליכי יבוא/יצוא, פריסה על שרת JBoss."
+      },
+      "bank": {
+        "role": "מפתח Backend",
+        "company": "בנק הפועלים",
+        "description": "פיתוח ותחזוקת מערכות מסחר מתקדמות עם MS-SQL, Oracle ופריימוורק Struts."
+      },
+      "education": {
+        "role": "תואר ראשון במתמטיקה ומדעי המחשב",
+        "company": "המכללה האקדמית נתניה",
+        "description": "תואר ראשון במתמטיקה ומדעי המחשב."
+      },
+      "military": {
+        "role": "מפקד",
+        "company": "חיל האוויר הישראלי",
+        "description": "שירות צבאי מלא כמפקד בחיל האוויר."
       }
     }
   },
