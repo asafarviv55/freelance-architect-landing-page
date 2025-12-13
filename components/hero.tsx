@@ -21,7 +21,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-[90vh] px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center text-center">
+    <section className="min-h-screen pt-20 sm:pt-24 px-6 sm:px-8 lg:px-12 flex flex-col items-center justify-center text-center">
       <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
         {/* Main heading */}
         <div className="space-y-3 sm:space-y-4">

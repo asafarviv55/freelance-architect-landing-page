@@ -1,4 +1,12 @@
 {
+  "header": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "process": "Process",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
   "hero": {
     "title": "Senior Software Architect",
     "subtitle": "Building fast, reliable systems that scale",

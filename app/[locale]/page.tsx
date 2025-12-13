@@ -1,3 +1,4 @@
+import Header from "@/components/Header"
 import Hero from "@/components/hero"
 import Services from "@/components/services"
 import Portfolio from "@/components/portfolio"
@@ -9,6 +10,7 @@ import Footer from "@/components/footer"
 export default function Home() {
   return (
     <main className="w-full bg-white">
+      <Header />
       <Hero />
       <Services />
       <Portfolio />

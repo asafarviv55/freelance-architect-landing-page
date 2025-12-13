@@ -7,7 +7,7 @@ export default function WhyWorkWithMe() {
   const reasons = t.raw('reasons') as string[];
 
   return (
-    <section className="px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32 bg-gray-50">
+    <section id="about" className="scroll-mt-20 px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-gray-950 mb-3 sm:mb-4">
