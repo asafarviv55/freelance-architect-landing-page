@@ -27,7 +27,7 @@ export default function Contact() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Get your key at web3forms.com
+          access_key: '6eb21bb3-f306-4bb0-9a14-4d7a6922c408',
           subject: 'New Contact from CoreSysLab Website',
           from_name: 'CoreSysLab Contact Form',
           name: formData.name,
