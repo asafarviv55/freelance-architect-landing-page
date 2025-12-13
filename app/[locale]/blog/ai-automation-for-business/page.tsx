@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
+import Header from '@/components/Header';
 
 export default function AIAutomationForBusiness() {
   const locale = useLocale();
@@ -187,14 +188,16 @@ export default function AIAutomationForBusiness() {
   const t = isHebrew ? content.he : content.en;
 
   return (
-    <div className={`min-h-screen bg-white py-16 px-6 sm:px-8 lg:px-12 ${isHebrew ? 'rtl' : 'ltr'}`} dir={isHebrew ? 'rtl' : 'ltr'}>
-      <div className="max-w-3xl mx-auto">
-        <Link
-          href={`/${locale}/blog`}
-          className="inline-block text-gray-500 hover:text-gray-700 transition-colors mb-8"
-        >
-          {t.backToList}
-        </Link>
+    <>
+      <Header />
+      <div className={`min-h-screen bg-white pt-24 pb-16 px-6 sm:px-8 lg:px-12 ${isHebrew ? 'rtl' : 'ltr'}`} dir={isHebrew ? 'rtl' : 'ltr'}>
+        <div className="max-w-3xl mx-auto">
+          <Link
+            href={`/${locale}/blog`}
+            className="inline-block text-gray-500 hover:text-gray-700 transition-colors mb-8"
+          >
+            {t.backToList}
+          </Link>
 
         <article>
           <header className="mb-10">
@@ -283,7 +286,8 @@ export default function AIAutomationForBusiness() {
             </section>
           </div>
         </article>
+        </div>
       </div>
-    </div>
+    </>
   )
 }

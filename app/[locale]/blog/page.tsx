@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
+import Header from '@/components/Header';
 
 const blogPosts = [
   {
@@ -63,8 +64,10 @@ export default function BlogPage() {
   const t = isHebrew ? content.he : content.en;
 
   return (
-    <div className={`min-h-screen bg-white py-16 px-6 sm:px-8 lg:px-12 ${isHebrew ? 'rtl' : 'ltr'}`} dir={isHebrew ? 'rtl' : 'ltr'}>
-      <div className="max-w-4xl mx-auto">
+    <>
+      <Header />
+      <div className={`min-h-screen bg-white pt-24 pb-16 px-6 sm:px-8 lg:px-12 ${isHebrew ? 'rtl' : 'ltr'}`} dir={isHebrew ? 'rtl' : 'ltr'}>
+        <div className="max-w-4xl mx-auto">
         <div className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-light tracking-tight text-gray-950 mb-4">
             {t.title}
@@ -97,7 +100,8 @@ export default function BlogPage() {
             </Link>
           ))}
         </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
