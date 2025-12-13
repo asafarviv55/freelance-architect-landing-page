@@ -5,6 +5,19 @@ import Link from 'next/link';
 
 const blogPosts = [
   {
+    slug: "ai-automation-for-business",
+    date: "2025-12-13",
+    readTime: { en: "5 min read", he: "5 דקות קריאה" },
+    title: {
+      en: "How AI Automation Can Transform Your Business Operations",
+      he: "איך אוטומציית AI יכולה לשנות את הפעילות העסקית שלך"
+    },
+    excerpt: {
+      en: "Discover how AI automation eliminates repetitive tasks, extracts insights from data, and delivers better customer experiences — with practical implementation strategies.",
+      he: "גלו איך אוטומציית AI מבטלת משימות חוזרות, מחלצת תובנות מנתונים, ומספקת חוויות לקוח טובות יותר — עם אסטרטגיות יישום מעשיות."
+    }
+  },
+  {
     slug: "system-architecture-planning-guide",
     date: "2025-12-11",
     readTime: { en: "8 min read", he: "8 דקות קריאה" },
