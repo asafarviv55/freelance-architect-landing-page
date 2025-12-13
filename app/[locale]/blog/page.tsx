@@ -6,6 +6,19 @@ import Header from '@/components/Header';
 
 const blogPosts = [
   {
+    slug: "mcp-model-context-protocol-guide",
+    date: "2025-12-14",
+    readTime: { en: "7 min read", he: "7 דקות קריאה" },
+    title: {
+      en: "MCP: The Protocol That Connects AI to Your Business Systems",
+      he: "MCP: הפרוטוקול שמחבר AI למערכות העסקיות שלך"
+    },
+    excerpt: {
+      en: "Learn how Model Context Protocol (MCP) enables AI to securely connect to your databases, APIs, and business applications — turning chatbots into integrated business tools.",
+      he: "למדו איך Model Context Protocol (MCP) מאפשר ל-AI להתחבר בצורה מאובטחת למסדי הנתונים, APIs והאפליקציות העסקיות שלכם — והופך צ'אטבוטים לכלים עסקיים משולבים."
+    }
+  },
+  {
     slug: "ai-automation-for-business",
     date: "2025-12-13",
     readTime: { en: "5 min read", he: "5 דקות קריאה" },
