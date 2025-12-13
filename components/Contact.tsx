@@ -21,20 +21,24 @@ export default function Contact() {
     setStatus('loading');
 
     try {
-      const response = await fetch('https://formspree.io/f/xpwzgkvj', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Get your key at web3forms.com
+          subject: 'New Contact from CoreSysLab Website',
+          from_name: 'CoreSysLab Contact Form',
           name: formData.name,
           email: formData.email,
-          phone: formData.phone,
+          phone: formData.phone || 'Not provided',
           message: formData.message,
         }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+      if (result.success) {
         setStatus('success');
         setFormData({ name: '', email: '', phone: '', message: '' });
       } else {
