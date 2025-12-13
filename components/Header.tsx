@@ -32,20 +32,26 @@ export default function Header() {
   };
 
   const navItems = [
-    { href: '#services', label: t('services') },
-    { href: '#portfolio', label: t('portfolio') },
-    { href: '#about', label: t('about') },
-    { href: '#process', label: t('process') },
+    { href: `/${locale}#services`, label: t('services') },
+    { href: `/${locale}#portfolio`, label: t('portfolio') },
+    { href: `/${locale}#about`, label: t('about') },
+    { href: `/${locale}#process`, label: t('process') },
     { href: `/${locale}/blog`, label: t('blog'), isLink: true },
   ];
 
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('#')) {
+    const hashIndex = href.indexOf('#');
+    if (hashIndex !== -1 && isHomePage) {
       e.preventDefault();
-      const element = document.querySelector(href);
+      const hash = href.substring(hashIndex);
+      const element = document.querySelector(hash);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
+      setIsMobileMenuOpen(false);
+    } else {
       setIsMobileMenuOpen(false);
     }
   };
