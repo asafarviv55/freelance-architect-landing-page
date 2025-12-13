@@ -96,16 +96,20 @@
     }
   },
   "whyWorkWithMe": {
-    "title": "Why Work With Me",
-    "subtitle": "What sets my approach apart",
+    "title": "About Me",
+    "subtitle": "Fast, Secure & Scalable",
+    "description": "Full transparency, clear communication, and real partnership. My goal isn't just to \"finish a feature\" — it's to build a system you can rely on for the long term.",
+    "whoIsItFor": "Who Is It For",
     "reasons": [
-      "Proven track record of launching successful products at scale",
-      "Deep expertise in system architecture and technical decision-making",
-      "Experienced in guiding founders through the entire journey: MVP planning, product decisions, architecture, and launch.",
-      "Focus on building production-ready code, not prototypes",
-      "Available for ongoing technical guidance and mentorship",
-      "Clear communication and collaborative problem-solving approach"
-    ]
+      "Entrepreneurs and startups at MVP / Growth stages",
+      "Businesses that need a smart internal system",
+      "Companies that need hands-on technical strengthening",
+      "Clients looking for a technology partner — not just a developer"
+    ],
+    "cta": {
+      "title": "Let's Talk",
+      "description": "If you have an idea, an existing system that needs improvement, or a complex technical need — I'd love to hear about it and suggest the right direction."
+    }
   },
   "process": {
     "title": "My Process",
