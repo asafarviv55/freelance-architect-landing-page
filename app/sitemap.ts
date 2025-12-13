@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://architectflow.vercel.app'
+const BASE_URL = 'https://www.coresyslab.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

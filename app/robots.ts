@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://architectflow.vercel.app/sitemap.xml',
+    sitemap: 'https://www.coresyslab.com/sitemap.xml',
   }
 }

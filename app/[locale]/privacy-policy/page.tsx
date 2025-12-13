@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
     en: {
       title: "Privacy Policy",
       lastUpdated: "Last updated: December 2025",
-      intro: "This Privacy Policy explains how information is collected, used, and protected when you visit architectflow.vercel.app or interact with our services.",
+      intro: "This Privacy Policy explains how information is collected, used, and protected when you visit www.coresyslab.com or interact with our services.",
       section1Title: "1. Information We Collect",
       section1Text: "We do not collect personal information directly through forms. However, we may collect limited technical data through:",
       section1List: [
@@ -52,7 +52,7 @@ export default function PrivacyPolicy() {
     he: {
       title: "מדיניות פרטיות",
       lastUpdated: "עדכון אחרון: דצמבר 2025",
-      intro: "מדיניות פרטיות זו מסבירה כיצד מידע נאסף, משמש ומוגן כאשר אתם מבקרים באתר architectflow.vercel.app או מתקשרים עם השירותים שלנו.",
+      intro: "מדיניות פרטיות זו מסבירה כיצד מידע נאסף, משמש ומוגן כאשר אתם מבקרים באתר www.coresyslab.com או מתקשרים עם השירותים שלנו.",
       section1Title: "1. מידע שאנו אוספים",
       section1Text: "איננו אוספים מידע אישי ישירות דרך טפסים. עם זאת, אנו עשויים לאסוף מידע טכני מוגבל באמצעות:",
       section1List: [
