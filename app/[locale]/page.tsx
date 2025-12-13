@@ -6,6 +6,7 @@ import Timeline from "@/components/Timeline"
 import MVPSection from "@/components/mvp-section"
 import WhyWorkWithMe from "@/components/why-work-with-me"
 import Process from "@/components/process"
+import Contact from "@/components/Contact"
 import Footer from "@/components/footer"
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <MVPSection />
       <WhyWorkWithMe />
       <Process />
+      <Contact />
       <Footer />
     </main>
   )

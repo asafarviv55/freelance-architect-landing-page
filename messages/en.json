@@ -133,6 +133,30 @@
       }
     }
   },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Have a project in mind? Let's discuss how I can help bring your ideas to life.",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Your name",
+      "email": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone Number (Optional)",
+      "phonePlaceholder": "+972-XX-XXX-XXXX",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! I'll get back to you soon.",
+      "error": "Something went wrong. Please try again or contact me via WhatsApp."
+    },
+    "info": {
+      "title": "Contact Information",
+      "address": "Location",
+      "email": "Email",
+      "whatsapp": "WhatsApp"
+    }
+  },
   "timeline": {
     "title": "Experience",
     "subtitle": "15+ years building software across industries",

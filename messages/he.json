@@ -133,6 +133,30 @@
       }
     }
   },
+  "contact": {
+    "title": "צור קשר",
+    "subtitle": "יש לך פרויקט בראש? בואו נדון איך אני יכול לעזור להפוך את הרעיונות שלך למציאות.",
+    "form": {
+      "name": "שם מלא",
+      "namePlaceholder": "השם שלך",
+      "email": "כתובת אימייל",
+      "emailPlaceholder": "your@email.com",
+      "phone": "מספר טלפון (אופציונלי)",
+      "phonePlaceholder": "054-XXX-XXXX",
+      "message": "הודעה",
+      "messagePlaceholder": "ספר לי על הפרויקט שלך...",
+      "submit": "שלח הודעה",
+      "sending": "שולח...",
+      "success": "ההודעה נשלחה בהצלחה! אחזור אליך בקרוב.",
+      "error": "משהו השתבש. נסה שוב או צור קשר דרך WhatsApp."
+    },
+    "info": {
+      "title": "פרטי התקשרות",
+      "address": "מיקום",
+      "email": "אימייל",
+      "whatsapp": "וואטסאפ"
+    }
+  },
   "timeline": {
     "title": "ניסיון",
     "subtitle": "15+ שנות ניסיון בבניית תוכנה במגוון תעשיות",
