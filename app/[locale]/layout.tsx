@@ -7,7 +7,6 @@ import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/i18n/routing'
 import WhatsAppButton from "@/components/WhatsAppButton"
-import LanguageSwitcher from "@/components/LanguageSwitcher"
 import GoogleAnalytics from "@/components/GoogleAnalytics"
 import "../globals.css"
 
@@ -91,7 +90,6 @@ export default async function LocaleLayout({
       </head>
       <body className={`font-sans antialiased`}>
         <NextIntlClientProvider messages={messages}>
-          <LanguageSwitcher />
           {children}
           <WhatsAppButton />
         </NextIntlClientProvider>

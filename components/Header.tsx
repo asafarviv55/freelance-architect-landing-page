@@ -1,15 +1,19 @@
 "use client"
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 export default function Header() {
   const t = useTranslations('header');
   const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
   const isHebrew = locale === 'he';
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +22,14 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const switchLocale = () => {
+    const newLocale = locale === 'en' ? 'he' : 'en';
+    const pathWithoutLocale = pathname.replace(/^\/(en|he)/, '') || '/';
+    startTransition(() => {
+      router.push(`/${newLocale}${pathWithoutLocale}`);
+    });
+  };
 
   const navItems = [
     { href: '#services', label: t('services') },
@@ -78,11 +90,20 @@ export default function Header() {
                 </a>
               )
             ))}
+            {/* Language Toggle */}
+            <button
+              onClick={switchLocale}
+              disabled={isPending}
+              className={`px-3 py-2 text-sm text-gray-600 hover:text-gray-950 transition-colors ${isPending ? 'opacity-50' : ''}`}
+              aria-label="Switch language"
+            >
+              {locale === 'en' ? 'עב' : 'EN'}
+            </button>
             <a
               href="https://wa.me/972546522485?text=Hi%20Asaf,%20I'm%20interested%20in%20your%20development%20services"
               target="_blank"
               rel="noopener noreferrer"
-              className={`${isHebrew ? 'mr-2 lg:mr-4' : 'ml-2 lg:ml-4'} px-4 lg:px-5 py-2 bg-green-500 text-white text-sm font-medium rounded-full hover:bg-green-600 transition-colors`}
+              className="px-4 lg:px-5 py-2 bg-green-500 text-white text-sm font-medium rounded-full hover:bg-green-600 transition-colors"
             >
               {t('contact')}
             </a>
@@ -131,6 +152,21 @@ export default function Header() {
                   </a>
                 )
               ))}
+              {/* Language Toggle Mobile */}
+              <button
+                onClick={() => {
+                  switchLocale();
+                  setIsMobileMenuOpen(false);
+                }}
+                disabled={isPending}
+                className={`px-4 py-3 text-gray-600 hover:text-gray-950 hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-2 ${isPending ? 'opacity-50' : ''}`}
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="9.25" stroke="currentColor" strokeWidth="1.5"/>
+                  <path d="M12 2.75C9.5 2.75 7.5 6.75 7.5 12C7.5 17.25 9.5 21.25 12 21.25C14.5 21.25 16.5 17.25 16.5 12C16.5 6.75 14.5 2.75 12 2.75Z" stroke="currentColor" strokeWidth="1.5"/>
+                </svg>
+                {locale === 'en' ? 'עברית' : 'English'}
+              </button>
               <a
                 href="https://wa.me/972546522485?text=Hi%20Asaf,%20I'm%20interested%20in%20your%20development%20services"
                 target="_blank"
