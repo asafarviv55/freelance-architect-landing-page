@@ -78,7 +78,7 @@ export default function Header() {
               alt="CoreSysLab"
               width={180}
               height={45}
-              className="h-8 sm:h-10 w-auto"
+              className="h-12 sm:h-14 w-auto"
               priority
             />
           </Link>
