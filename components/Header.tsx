@@ -85,7 +85,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          <div className="hidden md:flex items-center justify-between flex-1 ml-8">
             {navItems.map((item) => (
               item.isLink ? (
                 <Link
