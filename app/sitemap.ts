@@ -64,6 +64,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages,
     ...caseStudyPages,
     {
+      url: `${BASE_URL}/en/faq`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/he/faq`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/en/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',

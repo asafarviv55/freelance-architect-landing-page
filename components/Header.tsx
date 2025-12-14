@@ -35,9 +35,9 @@ export default function Header() {
     { href: `/${locale}#services`, label: t('services') },
     { href: `/${locale}#portfolio`, label: t('portfolio') },
     { href: `/${locale}#experience`, label: t('experience') },
-    { href: `/${locale}#about`, label: t('about') },
-    { href: `/${locale}#contact`, label: t('contact') },
+    { href: `/${locale}/faq`, label: 'FAQ', isLink: true },
     { href: `/${locale}/blog`, label: t('blog'), isLink: true },
+    { href: `/${locale}#contact`, label: t('contact') },
   ];
 
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
