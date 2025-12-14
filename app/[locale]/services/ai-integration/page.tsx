@@ -131,7 +131,7 @@ export default function AIIntegrationPage() {
           },
           {
             question: "How much do AI integrations cost?",
-            answer: "Integration projects typically range from $10,000 to $50,000 depending on complexity. Ongoing API costs vary widely—I design systems to minimize these while maximizing value."
+            answer: "Every AI integration is unique, so I provide custom quotes based on your specific requirements and complexity. I also design systems to minimize ongoing API costs while maximizing value."
           },
           {
             question: "Can AI work with my existing data?",
@@ -281,7 +281,7 @@ export default function AIIntegrationPage() {
           },
           {
             question: "כמה עולות אינטגרציות AI?",
-            answer: "פרויקטי אינטגרציה נעים בדרך כלל בין $10,000 ל-$50,000 בהתאם למורכבות. עלויות API שוטפות משתנות מאוד—אני מעצב מערכות שממזערות אותן תוך מקסום ערך."
+            answer: "כל אינטגרציית AI ייחודית, אז אני מספק הצעות מחיר מותאמות אישית על בסיס הדרישות והמורכבות הספציפיות שלך. אני גם מעצב מערכות שממזערות עלויות API שוטפות תוך מקסום ערך."
           },
           {
             question: "האם AI יכול לעבוד עם הנתונים הקיימים שלי?",

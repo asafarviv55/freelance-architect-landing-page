@@ -131,7 +131,7 @@ export default function SaaSDevelopmentPage() {
           },
           {
             question: "What's the investment for SaaS development?",
-            answer: "Full SaaS platform development typically ranges from $40,000 to $120,000 depending on complexity. I provide detailed quotes after understanding your specific requirements."
+            answer: "Every SaaS platform is different, so I provide custom quotes based on complexity and scope. After our discovery session, you'll receive a detailed proposal with fixed pricing—no surprises."
           },
           {
             question: "Do you handle the payment/billing integration?",
@@ -281,7 +281,7 @@ export default function SaaSDevelopmentPage() {
           },
           {
             question: "מה ההשקעה לפיתוח SaaS?",
-            answer: "פיתוח פלטפורמת SaaS מלאה נע בדרך כלל בין $40,000 ל-$120,000 בהתאם למורכבות. אני מספק הצעות מפורטות אחרי הבנת הדרישות הספציפיות שלך."
+            answer: "כל פלטפורמת SaaS שונה, אז אני מספק הצעות מחיר מותאמות אישית על בסיס המורכבות וההיקף. אחרי שיחת Discovery, תקבל הצעה מפורטת עם תמחור קבוע—בלי הפתעות."
           },
           {
             question: "אתה מטפל באינטגרציית תשלומים/חיוב?",

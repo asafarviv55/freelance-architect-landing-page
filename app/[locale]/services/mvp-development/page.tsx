@@ -130,8 +130,8 @@ export default function MVPDevelopmentPage() {
             answer: "Most MVPs take 4-8 weeks from kickoff to launch. The exact timeline depends on complexity, but I'm aggressive about cutting scope to hit target dates. Speed matters more than features at this stage."
           },
           {
-            question: "What's the typical investment for an MVP?",
-            answer: "MVP projects typically range from $15,000 to $40,000 depending on complexity. I provide a fixed quote after our discovery session so you know exactly what you're investing before we start."
+            question: "How do you price MVP projects?",
+            answer: "Every MVP is different, so I provide custom quotes based on scope and complexity. After our discovery call, you'll receive a detailed proposal with fixed pricing—no surprises. Let's talk about your specific needs."
           },
           {
             question: "Will the MVP code scale, or will we need to rewrite it?",
@@ -280,8 +280,8 @@ export default function MVPDevelopmentPage() {
             answer: "רוב ה-MVPs לוקחים 4-8 שבועות מהתחלה להשקה. לוח הזמנים המדויק תלוי במורכבות, אבל אני אגרסיבי בקיצוץ היקף כדי לעמוד בתאריכי יעד. מהירות חשובה יותר מפיצ'רים בשלב הזה."
           },
           {
-            question: "מה ההשקעה הטיפוסית ל-MVP?",
-            answer: "פרויקטי MVP נעים בדרך כלל בין $15,000 ל-$40,000 בהתאם למורכבות. אני מספק הצעת מחיר קבועה אחרי שיחת הגילוי כדי שתדע בדיוק מה אתה משקיע לפני שמתחילים."
+            question: "איך אתה מתמחר פרויקטי MVP?",
+            answer: "כל MVP שונה, אז אני מספק הצעות מחיר מותאמות אישית בהתבסס על היקף ומורכבות. אחרי שיחת הגילוי, תקבל הצעה מפורטת עם תמחור קבוע—בלי הפתעות. בוא נדבר על הצרכים הספציפיים שלך."
           },
           {
             question: "האם קוד ה-MVP יתרחב, או שנצטרך לשכתב אותו?",

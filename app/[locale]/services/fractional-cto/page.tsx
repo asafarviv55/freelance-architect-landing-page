@@ -37,7 +37,7 @@ export default function FractionalCTOPage() {
       whoSection: {
         title: "Who This Is For",
         profiles: [
-          { title: "Funded Startups", description: "Series A/B companies that need technical leadership but aren't ready for a $300k+ CTO salary." },
+          { title: "Funded Startups", description: "Series A/B companies that need technical leadership but aren't ready for a full-time CTO commitment." },
           { title: "Non-Technical Founders", description: "You have a great product vision but need a technical partner to translate it into architecture." },
           { title: "Growing Teams", description: "Your engineering team is expanding and you need help with structure, processes, and culture." },
           { title: "Pre-Acquisition", description: "You're preparing for due diligence and need your technical house in order." }
@@ -96,7 +96,7 @@ export default function FractionalCTOPage() {
       whoSection: {
         title: "למי זה מתאים",
         profiles: [
-          { title: "סטארטאפים ממומנים", description: "חברות Series A/B שצריכות הנהגה טכנית אבל לא מוכנות למשכורת CTO של $300k+." },
+          { title: "סטארטאפים ממומנים", description: "חברות Series A/B שצריכות הנהגה טכנית אבל לא מוכנות להתחייבות ל-CTO במשרה מלאה." },
           { title: "מייסדים לא-טכניים", description: "יש לך חזון מוצר מצוין אבל צריך שותף טכני שיתרגם אותו לארכיטקטורה." },
           { title: "צוותים צומחים", description: "צוות ההנדסה שלך מתרחב ואתה צריך עזרה עם מבנה, תהליכים ותרבות." },
           { title: "טרום-רכישה", description: "אתה מתכונן לבדיקת נאותות וצריך שהבית הטכני יהיה מסודר." }

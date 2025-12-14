@@ -44,12 +44,12 @@ export default function FAQPage() {
           name: "Pricing & Investment",
           questions: [
             {
-              question: "How much does an MVP cost?",
-              answer: "MVP projects typically range from $15,000 to $40,000 depending on complexity. I provide a fixed quote after our discovery session so you know exactly what you're investing before we start."
+              question: "How do you price projects?",
+              answer: "Every project is different, so I provide custom quotes based on scope and complexity. After our discovery session, you'll receive a detailed proposal with fixed pricing—no surprises."
             },
             {
-              question: "What's the investment for a full SaaS platform?",
-              answer: "Full SaaS platform development typically ranges from $40,000 to $120,000 depending on complexity. This includes authentication, billing, multi-tenancy, and core features."
+              question: "Do you offer fixed-price or hourly?",
+              answer: "I prefer fixed-price for defined projects—it aligns incentives and gives you cost certainty. For ongoing work or advisory roles, retainer arrangements work better."
             },
             {
               question: "Do you offer retainer arrangements?",
@@ -164,12 +164,12 @@ export default function FAQPage() {
           name: "תמחור והשקעה",
           questions: [
             {
-              question: "כמה עולה MVP?",
-              answer: "פרויקטי MVP נעים בדרך כלל בין $15,000 ל-$40,000 בהתאם למורכבות. אני מספק הצעת מחיר קבועה אחרי שיחת הגילוי כדי שתדע בדיוק מה אתה משקיע לפני שמתחילים."
+              question: "איך אתה מתמחר פרויקטים?",
+              answer: "כל פרויקט שונה, אז אני מספק הצעות מחיר מותאמות אישית בהתבסס על היקף ומורכבות. אחרי שיחת הגילוי, תקבל הצעה מפורטת עם תמחור קבוע—בלי הפתעות."
             },
             {
-              question: "מה ההשקעה לפלטפורמת SaaS מלאה?",
-              answer: "פיתוח פלטפורמת SaaS מלאה נע בדרך כלל בין $40,000 ל-$120,000 בהתאם למורכבות. זה כולל אימות, חיוב, multi-tenancy ופיצ'רי ליבה."
+              question: "אתה מציע מחיר קבוע או לפי שעה?",
+              answer: "אני מעדיף מחיר קבוע לפרויקטים מוגדרים—זה מיישר תמריצים ונותן לך ודאות עלות. לעבודה שוטפת או תפקידים ייעוציים, הסדרי ריטיינר עובדים טוב יותר."
             },
             {
               question: "אתה מציע הסדרי ריטיינר?",
