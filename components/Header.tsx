@@ -4,6 +4,7 @@ import { useState, useEffect, useTransition } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Header() {
   const t = useTranslations('header');
@@ -70,9 +71,16 @@ export default function Header() {
           {/* Logo */}
           <Link
             href={`/${locale}`}
-            className="text-lg sm:text-xl font-medium text-gray-950 hover:text-gray-700 transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            CoreSysLab
+            <Image
+              src="/logo.png"
+              alt="CoreSysLab"
+              width={180}
+              height={45}
+              className="h-8 sm:h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
