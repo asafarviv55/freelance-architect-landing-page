@@ -2,7 +2,52 @@ import { MetadataRoute } from 'next'
 
 const BASE_URL = 'https://www.coresyslab.com'
 
+const services = [
+  'mvp-development',
+  'saas-development',
+  'ai-integration',
+  'backend-development',
+  'cloud-devops',
+  'fractional-cto',
+]
+
+const caseStudies = [
+  'fintech-payment-platform',
+  'database-insights-ai',
+  'meeting-analysis-system',
+]
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const servicePages = services.flatMap((slug) => [
+    {
+      url: `${BASE_URL}/en/services/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/he/services/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+  ])
+
+  const caseStudyPages = caseStudies.flatMap((slug) => [
+    {
+      url: `${BASE_URL}/en/case-studies/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/he/case-studies/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+  ])
+
   return [
     {
       url: `${BASE_URL}/en`,
@@ -16,6 +61,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1.0,
     },
+    ...servicePages,
+    ...caseStudyPages,
     {
       url: `${BASE_URL}/en/blog`,
       lastModified: new Date(),

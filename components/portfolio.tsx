@@ -1,7 +1,8 @@
 "use client"
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const projectKeys = ['project1', 'project2', 'project3'] as const;
 
@@ -11,8 +12,15 @@ const projectImages: Record<string, string> = {
   project3: '/portfolio/meeting-analysis.png',
 };
 
+const projectSlugs: Record<string, string> = {
+  project1: 'fintech-payment-platform',
+  project2: 'database-insights-ai',
+  project3: 'meeting-analysis-system',
+};
+
 export default function Portfolio() {
   const t = useTranslations('portfolio');
+  const locale = useLocale();
 
   return (
     <section id="portfolio" className="scroll-mt-20 px-6 py-20 sm:px-8 sm:py-24 lg:px-12 lg:py-32 bg-white">
@@ -28,8 +36,9 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {projectKeys.map((key) => (
-            <div
+            <Link
               key={key}
+              href={`/${locale}/case-studies/${projectSlugs[key]}`}
               className="group bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-100/50 transition-all duration-300"
             >
               <div className="aspect-video bg-gray-200 relative overflow-hidden">
@@ -73,7 +82,7 @@ export default function Portfolio() {
                 </div>
 
                 <div className="mt-4 pt-4 border-t border-gray-200">
-                  <div className="flex items-center gap-4 text-sm">
+                  <div className="flex items-center justify-between text-sm">
                     <div>
                       <p className="text-xs text-gray-400 uppercase tracking-wider">
                         {t('resultLabel')}
@@ -82,10 +91,13 @@ export default function Portfolio() {
                         {t(`items.${key}.result`)}
                       </p>
                     </div>
+                    <span className="text-gray-400 group-hover:text-gray-600 transition-colors">
+                      {locale === 'he' ? 'צפה בפרויקט →' : 'View project →'}
+                    </span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
