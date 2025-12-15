@@ -6,6 +6,19 @@ import Header from '@/components/Header';
 
 const blogPosts = [
   {
+    slug: "choosing-tech-stack-for-startup",
+    date: "2025-12-15",
+    readTime: { en: "6 min read", he: "6 דקות קריאה" },
+    title: {
+      en: "Choosing the Right Tech Stack for Your Startup",
+      he: "איך לבחור את הטכנולוגיה הנכונה לסטארטאפ שלך"
+    },
+    excerpt: {
+      en: "Your tech stack is the foundation of your product. Learn how to evaluate options, avoid common mistakes, and choose technologies that accelerate your growth.",
+      he: "הטכנולוגיה שלך היא הבסיס של המוצר. למדו איך להעריך אפשרויות, להימנע מטעויות נפוצות, ולבחור טכנולוגיות שמאיצות את הצמיחה שלכם."
+    }
+  },
+  {
     slug: "mcp-model-context-protocol-guide",
     date: "2025-12-14",
     readTime: { en: "7 min read", he: "7 דקות קריאה" },
