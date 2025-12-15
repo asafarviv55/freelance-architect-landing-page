@@ -14,6 +14,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.coresyslab.com'),
   title: "Asaf Arviv | Senior Software Architect & MVP Development",
   description:
     "SaaS development, system architecture, backend engineering, AI automation and MVP building for startups and businesses. Expert in cloud infrastructure and scaling solutions.",

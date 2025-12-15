@@ -13,6 +13,16 @@ const nextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'coresyslab.com' }],
+        destination: 'https://www.coresyslab.com/:path*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default withNextIntl(nextConfig)
