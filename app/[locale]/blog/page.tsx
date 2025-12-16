@@ -6,6 +6,19 @@ import Header from '@/components/Header';
 
 const blogPosts = [
   {
+    slug: "ai-agents-for-startups",
+    date: "2025-12-16",
+    readTime: { en: "7 min read", he: "7 דקות קריאה" },
+    title: {
+      en: "AI Agents for Startups: When and How to Use Autonomous AI Systems",
+      he: "סוכני AI לסטארטאפים: מתי ואיך להשתמש במערכות AI אוטונומיות"
+    },
+    excerpt: {
+      en: "AI agents are the hottest topic in tech. Learn what they are, practical use cases for startups, popular frameworks, and how to implement them effectively.",
+      he: "סוכני AI הם הנושא הלוהט ביותר בטכנולוגיה. למדו מה הם, מקרי שימוש מעשיים לסטארטאפים, פריימוורקים פופולריים ואיך ליישם אותם בצורה אפקטיבית."
+    }
+  },
+  {
     slug: "choosing-tech-stack-for-startup",
     date: "2025-12-15",
     readTime: { en: "6 min read", he: "6 דקות קריאה" },
