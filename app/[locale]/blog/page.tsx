@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import Header from '@/components/Header';
@@ -13,6 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+
+const POSTS_PER_PAGE = 6;
 
 type BlogPost = {
   slug: string;
@@ -134,6 +136,125 @@ function formatDate(dateString: string, isHebrew: boolean): string {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
+function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+  isHebrew
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+  isHebrew: boolean;
+}) {
+  if (totalPages <= 1) return null;
+
+  const pages: (number | 'ellipsis')[] = [];
+
+  // Always show first page
+  pages.push(1);
+
+  // Add ellipsis or pages
+  if (currentPage > 3) {
+    pages.push('ellipsis');
+  }
+
+  // Add pages around current
+  for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+    if (!pages.includes(i)) {
+      pages.push(i);
+    }
+  }
+
+  // Add ellipsis before last if needed
+  if (currentPage < totalPages - 2) {
+    pages.push('ellipsis');
+  }
+
+  // Always show last page if more than 1 page
+  if (totalPages > 1 && !pages.includes(totalPages)) {
+    pages.push(totalPages);
+  }
+
+  const buttonClass = (isActive: boolean, isDisabled: boolean) => `
+    inline-flex items-center justify-center min-w-[40px] h-10 px-3 text-sm font-medium rounded-lg
+    transition-all duration-150
+    focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2
+    ${isDisabled
+      ? 'text-gray-300 cursor-not-allowed'
+      : isActive
+        ? 'bg-gray-900 text-white'
+        : 'text-gray-700 hover:bg-gray-100'
+    }
+  `;
+
+  return (
+    <nav
+      className="flex items-center justify-center gap-1 mt-12"
+      aria-label={isHebrew ? 'ניווט עמודים' : 'Pagination'}
+    >
+      {/* Previous Button */}
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className={buttonClass(false, currentPage === 1)}
+        aria-label={isHebrew ? 'עמוד קודם' : 'Previous page'}
+      >
+        <svg
+          className={`w-4 h-4 ${isHebrew ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+        <span className="hidden sm:inline ml-1">{isHebrew ? 'הקודם' : 'Previous'}</span>
+      </button>
+
+      {/* Page Numbers */}
+      <div className="flex items-center gap-1">
+        {pages.map((page, index) => (
+          page === 'ellipsis' ? (
+            <span key={`ellipsis-${index}`} className="px-2 text-gray-400" aria-hidden="true">
+              ...
+            </span>
+          ) : (
+            <button
+              key={page}
+              onClick={() => onPageChange(page)}
+              className={buttonClass(currentPage === page, false)}
+              aria-label={isHebrew ? `עמוד ${page}` : `Page ${page}`}
+              aria-current={currentPage === page ? 'page' : undefined}
+            >
+              {page}
+            </button>
+          )
+        ))}
+      </div>
+
+      {/* Next Button */}
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className={buttonClass(false, currentPage === totalPages)}
+        aria-label={isHebrew ? 'עמוד הבא' : 'Next page'}
+      >
+        <span className="hidden sm:inline mr-1">{isHebrew ? 'הבא' : 'Next'}</span>
+        <svg
+          className={`w-4 h-4 ${isHebrew ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </nav>
+  );
+}
+
 function PostCard({
   post,
   locale,
@@ -214,6 +335,7 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string>('all');
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const content = {
     en: {
@@ -226,6 +348,7 @@ export default function BlogPage() {
       noResults: "No articles found matching your criteria.",
       clearFilters: "Clear filters",
       articlesCount: (count: number) => `${count} article${count !== 1 ? 's' : ''}`,
+      pageInfo: (current: number, total: number) => `Page ${current} of ${total}`,
     },
     he: {
       title: "בלוג",
@@ -237,6 +360,7 @@ export default function BlogPage() {
       noResults: "לא נמצאו מאמרים התואמים לחיפוש.",
       clearFilters: "נקה סינון",
       articlesCount: (count: number) => `${count} מאמר${count !== 1 ? 'ים' : ''}`,
+      pageInfo: (current: number, total: number) => `עמוד ${current} מתוך ${total}`,
     }
   };
 
@@ -285,25 +409,44 @@ export default function BlogPage() {
     return filtered;
   }, [searchQuery, selectedTag, sortOrder, isHebrew]);
 
-  // Get featured post (only when no filters applied)
-  const featuredPost = useMemo(() => {
-    if (searchQuery || selectedTag !== 'all') return null;
-    return blogPosts.find(post => post.featured) || blogPosts[0];
-  }, [searchQuery, selectedTag]);
+  // Reset page when filters change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedTag, sortOrder]);
 
-  // Regular posts (exclude featured when showing it)
-  const regularPosts = useMemo(() => {
+  // Get featured post (only when no filters applied and on first page)
+  const featuredPost = useMemo(() => {
+    if (searchQuery || selectedTag !== 'all' || currentPage !== 1) return null;
+    return blogPosts.find(post => post.featured) || blogPosts[0];
+  }, [searchQuery, selectedTag, currentPage]);
+
+  // Posts to paginate (exclude featured when showing it)
+  const postsForPagination = useMemo(() => {
     if (!featuredPost) return filteredPosts;
     return filteredPosts.filter(post => post.slug !== featuredPost.slug);
   }, [filteredPosts, featuredPost]);
+
+  // Pagination calculations
+  const totalPages = Math.ceil(postsForPagination.length / POSTS_PER_PAGE);
+  const paginatedPosts = useMemo(() => {
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+    return postsForPagination.slice(startIndex, startIndex + POSTS_PER_PAGE);
+  }, [postsForPagination, currentPage]);
 
   const clearFilters = () => {
     setSearchQuery('');
     setSelectedTag('all');
     setSortOrder('newest');
+    setCurrentPage(1);
   };
 
   const hasActiveFilters = searchQuery || selectedTag !== 'all';
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Scroll to top of posts section
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -407,7 +550,15 @@ export default function BlogPage() {
 
             {/* Results count and clear filters */}
             <div className="flex items-center justify-between text-sm text-gray-500">
-              <span>{t.articlesCount(filteredPosts.length)}</span>
+              <div className="flex items-center gap-3">
+                <span>{t.articlesCount(filteredPosts.length)}</span>
+                {totalPages > 1 && (
+                  <>
+                    <span aria-hidden="true">•</span>
+                    <span>{t.pageInfo(currentPage, totalPages)}</span>
+                  </>
+                )}
+              </div>
               {hasActiveFilters && (
                 <button
                   onClick={clearFilters}
@@ -433,7 +584,7 @@ export default function BlogPage() {
           ) : (
             <div className="space-y-8">
               {/* Featured Post */}
-              {featuredPost && !hasActiveFilters && (
+              {featuredPost && !hasActiveFilters && currentPage === 1 && (
                 <section aria-labelledby="featured-heading">
                   <h2 id="featured-heading" className="sr-only">
                     {isHebrew ? 'מאמר מומלץ' : 'Featured Article'}
@@ -453,7 +604,7 @@ export default function BlogPage() {
                   {isHebrew ? 'כל המאמרים' : 'All Articles'}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {(hasActiveFilters ? filteredPosts : regularPosts).map((post) => (
+                  {paginatedPosts.map((post) => (
                     <PostCard
                       key={post.slug}
                       post={post}
@@ -463,6 +614,14 @@ export default function BlogPage() {
                   ))}
                 </div>
               </section>
+
+              {/* Pagination */}
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                isHebrew={isHebrew}
+              />
             </div>
           )}
         </div>
