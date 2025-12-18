@@ -6,6 +6,19 @@ import Header from '@/components/Header';
 
 const blogPosts = [
   {
+    slug: "rag-for-startups-guide",
+    date: "2025-12-17",
+    readTime: { en: "8 min read", he: "8 דקות קריאה" },
+    title: {
+      en: "RAG for Startups: Building AI That Actually Knows Your Business",
+      he: "RAG לסטארטאפים: בניית AI שבאמת מכיר את העסק שלכם"
+    },
+    excerpt: {
+      en: "Learn how Retrieval Augmented Generation grounds AI responses in your actual business data — reducing hallucinations, enabling citations, and keeping your data private.",
+      he: "למדו איך Retrieval Augmented Generation מעגן תשובות AI בנתונים העסקיים האמיתיים שלכם — מפחית הזיות, מאפשר ציטוטים ושומר על פרטיות הנתונים."
+    }
+  },
+  {
     slug: "ai-agents-for-startups",
     date: "2025-12-16",
     readTime: { en: "7 min read", he: "7 דקות קריאה" },
