@@ -1,10 +1,30 @@
 "use client"
 
+import { useState, useMemo } from 'react';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
 import Header from '@/components/Header';
+import { Input } from '@/components/ui/input';
+import { Badge } from '@/components/ui/badge';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
-const blogPosts = [
+type BlogPost = {
+  slug: string;
+  date: string;
+  readTime: { en: string; he: string };
+  title: { en: string; he: string };
+  excerpt: { en: string; he: string };
+  tags: { en: string[]; he: string[] };
+  featured?: boolean;
+};
+
+const blogPosts: BlogPost[] = [
   {
     slug: "rag-for-startups-guide",
     date: "2025-12-17",
@@ -16,7 +36,9 @@ const blogPosts = [
     excerpt: {
       en: "Learn how Retrieval Augmented Generation grounds AI responses in your actual business data — reducing hallucinations, enabling citations, and keeping your data private.",
       he: "למדו איך Retrieval Augmented Generation מעגן תשובות AI בנתונים העסקיים האמיתיים שלכם — מפחית הזיות, מאפשר ציטוטים ושומר על פרטיות הנתונים."
-    }
+    },
+    tags: { en: ["AI", "RAG", "Startups"], he: ["AI", "RAG", "סטארטאפים"] },
+    featured: true
   },
   {
     slug: "ai-agents-for-startups",
@@ -29,7 +51,8 @@ const blogPosts = [
     excerpt: {
       en: "AI agents are the hottest topic in tech. Learn what they are, practical use cases for startups, popular frameworks, and how to implement them effectively.",
       he: "סוכני AI הם הנושא הלוהט ביותר בטכנולוגיה. למדו מה הם, מקרי שימוש מעשיים לסטארטאפים, פריימוורקים פופולריים ואיך ליישם אותם בצורה אפקטיבית."
-    }
+    },
+    tags: { en: ["AI", "Agents", "Startups"], he: ["AI", "סוכנים", "סטארטאפים"] }
   },
   {
     slug: "choosing-tech-stack-for-startup",
@@ -42,7 +65,8 @@ const blogPosts = [
     excerpt: {
       en: "Your tech stack is the foundation of your product. Learn how to evaluate options, avoid common mistakes, and choose technologies that accelerate your growth.",
       he: "הטכנולוגיה שלך היא הבסיס של המוצר. למדו איך להעריך אפשרויות, להימנע מטעויות נפוצות, ולבחור טכנולוגיות שמאיצות את הצמיחה שלכם."
-    }
+    },
+    tags: { en: ["Tech Stack", "Startups", "Architecture"], he: ["טכנולוגיה", "סטארטאפים", "ארכיטקטורה"] }
   },
   {
     slug: "mcp-model-context-protocol-guide",
@@ -55,7 +79,8 @@ const blogPosts = [
     excerpt: {
       en: "Learn how Model Context Protocol (MCP) enables AI to securely connect to your databases, APIs, and business applications — turning chatbots into integrated business tools.",
       he: "למדו איך Model Context Protocol (MCP) מאפשר ל-AI להתחבר בצורה מאובטחת למסדי הנתונים, APIs והאפליקציות העסקיות שלכם — והופך צ'אטבוטים לכלים עסקיים משולבים."
-    }
+    },
+    tags: { en: ["AI", "MCP", "Integration"], he: ["AI", "MCP", "אינטגרציה"] }
   },
   {
     slug: "ai-automation-for-business",
@@ -68,7 +93,8 @@ const blogPosts = [
     excerpt: {
       en: "Discover how AI automation eliminates repetitive tasks, extracts insights from data, and delivers better customer experiences — with practical implementation strategies.",
       he: "גלו איך אוטומציית AI מבטלת משימות חוזרות, מחלצת תובנות מנתונים, ומספקת חוויות לקוח טובות יותר — עם אסטרטגיות יישום מעשיות."
-    }
+    },
+    tags: { en: ["AI", "Automation", "Business"], he: ["AI", "אוטומציה", "עסקים"] }
   },
   {
     slug: "system-architecture-planning-guide",
@@ -81,7 +107,8 @@ const blogPosts = [
     excerpt: {
       en: "A comprehensive guide to planning system architecture — from requirements analysis to scalability planning, with real-world SaaS examples.",
       he: "מדריך מקיף לתכנון ארכיטקטורת מערכת — מניתוח דרישות ועד תכנון סקיילביליות, עם דוגמאות מעולם ה-SaaS."
-    }
+    },
+    tags: { en: ["Architecture", "SaaS", "Planning"], he: ["ארכיטקטורה", "SaaS", "תכנון"] }
   },
   {
     slug: "how-to-build-mvp-for-startups",
@@ -94,66 +121,352 @@ const blogPosts = [
     excerpt: {
       en: "A practical guide to building your Minimum Viable Product — from defining the core problem to launching and measuring results.",
       he: "מדריך מעשי לבניית המוצר המינימלי שלך — מהגדרת הבעיה המרכזית ועד להשקה ומדידת תוצאות."
-    }
+    },
+    tags: { en: ["MVP", "Startups", "Product"], he: ["MVP", "סטארטאפים", "מוצר"] }
   }
 ];
+
+function formatDate(dateString: string, isHebrew: boolean): string {
+  const date = new Date(dateString);
+  if (isHebrew) {
+    return date.toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+
+function PostCard({
+  post,
+  locale,
+  isHebrew,
+  isFeatured = false
+}: {
+  post: BlogPost;
+  locale: string;
+  isHebrew: boolean;
+  isFeatured?: boolean;
+}) {
+  const title = isHebrew ? post.title.he : post.title.en;
+  const excerpt = isHebrew ? post.excerpt.he : post.excerpt.en;
+  const readTime = isHebrew ? post.readTime.he : post.readTime.en;
+  const tags = isHebrew ? post.tags.he : post.tags.en;
+
+  return (
+    <Link
+      href={`/${locale}/blog/${post.slug}`}
+      className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 rounded-xl"
+      aria-label={`${isHebrew ? 'קרא מאמר:' : 'Read article:'} ${title}`}
+    >
+      <article
+        className={`
+          h-full border border-gray-200 rounded-xl p-6
+          hover:border-gray-300 hover:shadow-md
+          transition-all duration-200
+          flex flex-col
+          ${isFeatured ? 'bg-gradient-to-br from-gray-50 to-white' : 'bg-white'}
+        `}
+      >
+        {isFeatured && (
+          <div className="mb-3">
+            <Badge variant="default" className="bg-gray-900 text-white text-xs">
+              {isHebrew ? 'מאמר מומלץ' : 'Featured'}
+            </Badge>
+          </div>
+        )}
+
+        <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 mb-3">
+          <time dateTime={post.date}>{formatDate(post.date, isHebrew)}</time>
+          <span aria-hidden="true">•</span>
+          <span>{readTime}</span>
+        </div>
+
+        <h2 className={`
+          font-medium text-gray-950 mb-3
+          group-hover:text-gray-700 transition-colors
+          ${isFeatured ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'}
+        `}>
+          {title}
+        </h2>
+
+        <p className={`text-gray-600 leading-relaxed mb-4 flex-grow ${isFeatured ? '' : 'line-clamp-3'}`}>
+          {excerpt}
+        </p>
+
+        <div className="flex flex-wrap gap-2 mt-auto pt-2">
+          {tags.map((tag) => (
+            <Badge
+              key={tag}
+              variant="secondary"
+              className="text-xs bg-gray-100 text-gray-700 hover:bg-gray-200"
+            >
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      </article>
+    </Link>
+  );
+}
 
 export default function BlogPage() {
   const locale = useLocale();
   const isHebrew = locale === 'he';
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTag, setSelectedTag] = useState<string>('all');
+  const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
+
   const content = {
     en: {
       title: "Blog",
-      subtitle: "Insights on building products, scaling startups, and software architecture"
+      subtitle: "Insights on building products, scaling startups, and software architecture",
+      searchPlaceholder: "Search articles...",
+      allTags: "All Topics",
+      sortNewest: "Newest First",
+      sortOldest: "Oldest First",
+      noResults: "No articles found matching your criteria.",
+      clearFilters: "Clear filters",
+      articlesCount: (count: number) => `${count} article${count !== 1 ? 's' : ''}`,
     },
     he: {
       title: "בלוג",
-      subtitle: "תובנות על בניית מוצרים, צמיחת סטארטאפים וארכיטקטורת תוכנה"
+      subtitle: "תובנות על בניית מוצרים, צמיחת סטארטאפים וארכיטקטורת תוכנה",
+      searchPlaceholder: "חיפוש מאמרים...",
+      allTags: "כל הנושאים",
+      sortNewest: "החדשים ראשונים",
+      sortOldest: "הישנים ראשונים",
+      noResults: "לא נמצאו מאמרים התואמים לחיפוש.",
+      clearFilters: "נקה סינון",
+      articlesCount: (count: number) => `${count} מאמר${count !== 1 ? 'ים' : ''}`,
     }
   };
 
   const t = isHebrew ? content.he : content.en;
 
+  // Extract all unique tags
+  const allTags = useMemo(() => {
+    const tagsSet = new Set<string>();
+    blogPosts.forEach(post => {
+      const tags = isHebrew ? post.tags.he : post.tags.en;
+      tags.forEach(tag => tagsSet.add(tag));
+    });
+    return Array.from(tagsSet).sort();
+  }, [isHebrew]);
+
+  // Filter and sort posts
+  const filteredPosts = useMemo(() => {
+    let filtered = [...blogPosts];
+
+    // Search filter
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(post => {
+        const title = (isHebrew ? post.title.he : post.title.en).toLowerCase();
+        const excerpt = (isHebrew ? post.excerpt.he : post.excerpt.en).toLowerCase();
+        const tags = (isHebrew ? post.tags.he : post.tags.en).map(t => t.toLowerCase());
+        return title.includes(query) || excerpt.includes(query) || tags.some(t => t.includes(query));
+      });
+    }
+
+    // Tag filter
+    if (selectedTag !== 'all') {
+      filtered = filtered.filter(post => {
+        const tags = isHebrew ? post.tags.he : post.tags.en;
+        return tags.includes(selectedTag);
+      });
+    }
+
+    // Sort
+    filtered.sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+    });
+
+    return filtered;
+  }, [searchQuery, selectedTag, sortOrder, isHebrew]);
+
+  // Get featured post (only when no filters applied)
+  const featuredPost = useMemo(() => {
+    if (searchQuery || selectedTag !== 'all') return null;
+    return blogPosts.find(post => post.featured) || blogPosts[0];
+  }, [searchQuery, selectedTag]);
+
+  // Regular posts (exclude featured when showing it)
+  const regularPosts = useMemo(() => {
+    if (!featuredPost) return filteredPosts;
+    return filteredPosts.filter(post => post.slug !== featuredPost.slug);
+  }, [filteredPosts, featuredPost]);
+
+  const clearFilters = () => {
+    setSearchQuery('');
+    setSelectedTag('all');
+    setSortOrder('newest');
+  };
+
+  const hasActiveFilters = searchQuery || selectedTag !== 'all';
+
   return (
     <>
       <Header />
-      <div className={`min-h-screen bg-white pt-24 pb-16 px-6 sm:px-8 lg:px-12 ${isHebrew ? 'rtl' : 'ltr'}`} dir={isHebrew ? 'rtl' : 'ltr'}>
-        <div className="max-w-4xl mx-auto">
-        <div className="mb-12">
-          <h1 className="text-4xl sm:text-5xl font-light tracking-tight text-gray-950 mb-4">
-            {t.title}
-          </h1>
-          <p className="text-lg text-gray-500">
-            {t.subtitle}
-          </p>
-        </div>
+      <div
+        className={`min-h-screen bg-white pt-24 pb-16 px-6 sm:px-8 lg:px-12 ${isHebrew ? 'rtl' : 'ltr'}`}
+        dir={isHebrew ? 'rtl' : 'ltr'}
+      >
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <header className="mb-10">
+            <h1 className="text-4xl sm:text-5xl font-light tracking-tight text-gray-950 mb-4">
+              {t.title}
+            </h1>
+            <p className="text-lg text-gray-500 max-w-2xl">
+              {t.subtitle}
+            </p>
+          </header>
 
-        <div className="space-y-8">
-          {blogPosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/${locale}/blog/${post.slug}`}
-              className="block group"
-            >
-              <article className="border border-gray-200 rounded-xl p-6 sm:p-8 hover:border-gray-300 hover:shadow-sm transition-all duration-200">
-                <div className="flex items-center gap-3 text-sm text-gray-500 mb-3">
-                  <time>{post.date}</time>
-                  <span>•</span>
-                  <span>{isHebrew ? post.readTime.he : post.readTime.en}</span>
-                </div>
-                <h2 className="text-xl sm:text-2xl font-medium text-gray-950 mb-3 group-hover:text-gray-700 transition-colors">
-                  {isHebrew ? post.title.he : post.title.en}
+          {/* Filters Section */}
+          <div className="mb-8 space-y-4">
+            {/* Search and Sort Row */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="relative flex-grow max-w-md">
+                <label htmlFor="search-posts" className="sr-only">
+                  {t.searchPlaceholder}
+                </label>
+                <svg
+                  className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 ${isHebrew ? 'right-3' : 'left-3'}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+                <Input
+                  id="search-posts"
+                  type="search"
+                  placeholder={t.searchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className={`${isHebrew ? 'pr-10 pl-3' : 'pl-10 pr-3'} h-10`}
+                  aria-label={t.searchPlaceholder}
+                />
+              </div>
+
+              <Select value={sortOrder} onValueChange={(value: 'newest' | 'oldest') => setSortOrder(value)}>
+                <SelectTrigger
+                  className="w-full sm:w-44 h-10"
+                  aria-label={isHebrew ? 'סדר מיון' : 'Sort order'}
+                >
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="newest">{t.sortNewest}</SelectItem>
+                  <SelectItem value="oldest">{t.sortOldest}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Tag Chips */}
+            <div className="flex flex-wrap gap-2" role="group" aria-label={isHebrew ? 'סנן לפי נושא' : 'Filter by topic'}>
+              <button
+                onClick={() => setSelectedTag('all')}
+                className={`
+                  px-3 py-1.5 text-sm rounded-full border transition-all duration-150
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2
+                  ${selectedTag === 'all'
+                    ? 'bg-gray-900 text-white border-gray-900'
+                    : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                  }
+                `}
+                aria-pressed={selectedTag === 'all'}
+              >
+                {t.allTags}
+              </button>
+              {allTags.map((tag) => (
+                <button
+                  key={tag}
+                  onClick={() => setSelectedTag(tag)}
+                  className={`
+                    px-3 py-1.5 text-sm rounded-full border transition-all duration-150
+                    focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2
+                    ${selectedTag === tag
+                      ? 'bg-gray-900 text-white border-gray-900'
+                      : 'bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                    }
+                  `}
+                  aria-pressed={selectedTag === tag}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+
+            {/* Results count and clear filters */}
+            <div className="flex items-center justify-between text-sm text-gray-500">
+              <span>{t.articlesCount(filteredPosts.length)}</span>
+              {hasActiveFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="text-gray-600 hover:text-gray-900 underline underline-offset-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-950 focus-visible:ring-offset-2 rounded"
+                >
+                  {t.clearFilters}
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Posts Grid */}
+          {filteredPosts.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-gray-500 text-lg mb-4">{t.noResults}</p>
+              <button
+                onClick={clearFilters}
+                className="text-gray-700 hover:text-gray-900 underline underline-offset-2 transition-colors"
+              >
+                {t.clearFilters}
+              </button>
+            </div>
+          ) : (
+            <div className="space-y-8">
+              {/* Featured Post */}
+              {featuredPost && !hasActiveFilters && (
+                <section aria-labelledby="featured-heading">
+                  <h2 id="featured-heading" className="sr-only">
+                    {isHebrew ? 'מאמר מומלץ' : 'Featured Article'}
+                  </h2>
+                  <PostCard
+                    post={featuredPost}
+                    locale={locale}
+                    isHebrew={isHebrew}
+                    isFeatured={true}
+                  />
+                </section>
+              )}
+
+              {/* Regular Posts Grid */}
+              <section aria-labelledby="articles-heading">
+                <h2 id="articles-heading" className="sr-only">
+                  {isHebrew ? 'כל המאמרים' : 'All Articles'}
                 </h2>
-                <p className="text-gray-600 leading-relaxed">
-                  {isHebrew ? post.excerpt.he : post.excerpt.en}
-                </p>
-              </article>
-            </Link>
-          ))}
-        </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {(hasActiveFilters ? filteredPosts : regularPosts).map((post) => (
+                    <PostCard
+                      key={post.slug}
+                      post={post}
+                      locale={locale}
+                      isHebrew={isHebrew}
+                    />
+                  ))}
+                </div>
+              </section>
+            </div>
+          )}
         </div>
       </div>
     </>
-  )
+  );
 }
